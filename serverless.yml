@@ -1,0 +1,23 @@
+service: send-email-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+  environment:
+    SMTP_HOST: smtp.gmail.com
+    SMTP_PORT: 587
+    SMTP_USER: ramamurarireddy@gmail.com
+    SMTP_PASS:  lpzb odwk tzgm vbec
+
+plugins:
+  - serverless-offline
+
+functions:
+  sendEmail:
+    handler: handler.sendEmail
+    events:
+      - http:
+          path: send-email
+          method: post
+          cors: true
